@@ -1,25 +1,22 @@
-# Rust Resources
+# Rust Resources <!-- omit in toc -->
 
-- [Rust Resources](#rust-resources)
-  - [Motivationss](#motivationss)
-    - [Stumbles with Go](#stumbles-with-go)
-    - [Stumbles with Python](#stumbles-with-python)
-    - [How Rust can solve these problems](#how-rust-can-solve-these-problems)
-    - [Stumbles we are likely to have with Rust](#stumbles-we-are-likely-to-have-with-rust)
-  - [Learning materials](#learning-materials)
-  - [Interesting/Cool language features](#interestingcool-language-features)
-  - [Common patterns in the community](#common-patterns-in-the-community)
-  - [Basic project structure](#basic-project-structure)
-  - [Reference Material](#reference-material)
-  - [Testing](#testing)
-  - [Code documentation](#code-documentation)
-    - [Doc Links](#doc-links)
-    - [Doc Examples](#doc-examples)
-  - [Some Useful Cargo plugins](#some-useful-cargo-plugins)
-  - [Crates (Libraries)](#crates-libraries)
-    - [error_chain](#errorchain)
+- [Motivations](#motivations)
+  - [Stumbles with Go](#stumbles-with-go)
+  - [Stumbles with Python](#stumbles-with-python)
+  - [How Rust may help solve these problems](#how-rust-may-help-solve-these-problems)
+  - [Stumbles we are likely to have with Rust](#stumbles-we-are-likely-to-have-with-rust)
+- [Learning materials](#learning-materials)
+- [Sub Pages](#sub-pages)
+- [Basic project structure](#basic-project-structure)
+- [Reference Material](#reference-material)
+- [Testing](#testing)
+- [Code documentation](#code-documentation)
+  - [Doc Links](#doc-links)
+  - [Doc Examples](#doc-examples)
+- [Some Useful Cargo plugins](#some-useful-cargo-plugins)
+- [Crates (Libraries)](#crates-libraries)
 
-## Motivationss
+## Motivations
 
 ### Stumbles with Go
 
@@ -47,7 +44,7 @@ Projects: herald, several other bot trials
 1. Code being in production
 1. Lack of strict typing lead to many failures only discovered in production
 
-### How Rust can solve these problems
+### How Rust may help solve these problems
 
 1. `cargo` is the only package management tool and is heavily influenced by
    the community. It uses TOML which is a common data structure used in
@@ -78,35 +75,12 @@ installation to async programming and procedural macros.
 - [`Cargo Book`]
 - [`Build a CLI app`]
 
-## Interesting/Cool language features
+## Sub Pages
 
-- Match statements
-- Option and Result types
-- Macros
-- Lazy Iterators
-- Generics
-- Enums and Enum Variants
-
-_Invalid memory is still possible but difficult to manage outside of `unsafe!` code._
-
-## Common patterns in the community
-
-- Preludes: Instead of importing each module individually a single module
-  can function as a way to import multiple other modules at the same time.
-
-Example:
-
-```rust
-/// As a library user you can use the following import
-use crate::prelude::*;
-/// In place of much larger list of imports
-pub use crate::{
-    auth::{AnonymousAuthenticator, TokenAuthenticator, AppAuthenticator},
-    client::GitHubClient,
-    errors::APIError,
-    traits::*,
-};
-```
+- [`Cargo`]
+- [`Crates`]
+- [`Language Features`]
+- [`Patterns`]
 
 ## Basic project structure
 
@@ -172,45 +146,32 @@ impl Person {
         println!("Hello, {}!", self.name);
     }
 }
-```
+````
 
 ## Some Useful Cargo plugins
 
 These add extra commands to cargo that make it even more useful!
 
-- [`cargo-add`] - Add dependencies to your Cargo.toml without having to manually edit the file.
+- [`cargo-add`] - Add dependencies to your Cargo.toml without having to
+  manually edit the file.
+
   ```console
-  $ cargo install cargo-add
+  $ cargo install cargo-add --force
+    Updating crates.io index
+  Installing cargo-add v0.2.0
+    ...
+    Finished release [optimized] target(s) in 14.65s
+   Replacing /Users/reynn/.cargo/bin/cargo-add
   $ cargo add clap
   $ cargo add clap --version '~2.3'
   ```
 
 ## Crates (Libraries)
 
-List of crates that are likely to be common among many projects
-Click on a crate name to go to the relevant information
-
-- [error_chain](#error_chain) - Error handling simplification and
-  proposed for future implementation into core language.
-- [chrono](#chrono) - Superset of the std time library, makes it
-  easier to handle time data with timezones in particular.
-- [log+simplelog](#logging) - Logging library, `log` will be used everywhere
-  to send info, debug etc logs. Simplelog will be used in a main to setup a
-  logging pipeline with output methods such as terminal or files.
-- [clap](#CLI) - Setup parsing for command line arguments.
-- [serde](#serde) - Serialize/Deserialize framework, has various plugins
-  for data structure formats such as TOML, JSON, YAML and many others.
-- [reqwest](#reqwest) - HTTP client for making requests to services
-
-### error_chain
-
-[![error_chain license](https://img.shields.io/crates/l/error-chain.svg?style=flat-square)](https://crates.io/crates/error-chain)
-[![error_chain latest version](https://img.shields.io/crates/v/error-chain.svg?style=flat-square)](https://crates.io/crates/error-chain)
-[![error_chain github](https://img.shields.io/github/languages/top/rust-lang-nursery/error-chain?style=flat-square)](https://github.com/rust-lang-nursery/error-chain)
-
-Documentation for error_chain can be found at [docs.rs](https://docs.rs/error-chain).
+See [] for a complete run down of crates.
 
 <!-- Link section -->
+
 [`official book online`]: https://doc.rust-lang.org/book/
 [`official book kindle/paperback`]: https://www.amazon.com/Rust-Programming-Language-Covers-2018-ebook/dp/B07SRQ97RD
 [`rust by example`]: https://doc.rust-lang.org/stable/rust-by-example/
@@ -218,3 +179,4 @@ Documentation for error_chain can be found at [docs.rs](https://docs.rs/error-ch
 [`compiler error index`]: https://doc.rust-lang.org/error-index.html
 [`rust by example - documentation`]: https://doc.rust-lang.org/stable/rust-by-example/testing.html
 [`build a cli app`]: https://rust-cli.github.io/book/index.html
+[`features.md`]: /features.md

@@ -1,0 +1,16 @@
+{
+  "markdown.extension.toc.omittedFromToc": {
+    "cargo.md": [
+      "# Cargo Overview",
+    ],
+    "crates.md": [
+      "# Crates",
+    ],
+    "features.md": [
+      "# Language Features"
+    ],
+    "README.md": [
+      "# Rust Resources",
+    ],
+  }
+}
