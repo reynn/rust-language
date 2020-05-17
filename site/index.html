@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Rust Resources <!-- omit in toc --> - Rust for Delivery Architecture</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="generator" content="mkdocs-1.1.2, mkdocs-gitbook-1.0.7">
+
+<link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta rel="next" href="" />
+<link href="./css/style.min.css" rel="stylesheet"> 
+</head>
+
+<body>
+<div class="book">
+<div class="book-summary">
+<div id="book-search-input" role="search">
+<input type="text" placeholder="Type to search" />
+</div> <!-- end of book-search-input -->
+
+<nav role="navigation">
+<ul class="summary">
+<li>
+<a href="." target="_blank" class="custom-link">Rust for Delivery Architecture</a>
+</li>
+<li class="divider"></li>
+<li class="chapter" data-path="cargo/">
+<a href="cargo/">Cargo</a>
+<li class="chapter" data-path="best_practices/">
+<a href="best_practices/">Best Practices</a>
+<li class="chapter" data-path="crates/">
+<a href="crates/">Crates</a>
+<li class="chapter" data-path="features/">
+<a href="features/">Features</a>
+<li class="chapter" data-path="patterns/">
+<a href="patterns/">Patterns</a>
+<li class="divider"></li>
+
+
+
+<li><a href="http://www.mkdocs.org">
+Published with MkDocs
+</a></li>
+
+<li><a href="https://github.com/GitbookIO/theme-default">
+Theme by GitBook
+</a></li>
+</ul>
+
+</nav>
+
+</div> <!-- end of book-summary -->
+
+<div class="book-body">
+<div class="body-inner">
+<div class="book-header" role="navigation">
+
+<!-- Title -->
+<h1>
+<i class="fa fa-circle-o-notch fa-spin"></i>
+<a href="." ></a>
+</h1>
+
+</div> <!-- end of book-header -->
+
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="page-inner">
+<div id="book-search-results">
+<div class="search-noresults">
+
+<section class="normal markdown-section">
+
+
+
+<h1 id="rust-resources">Rust Resources <!-- omit in toc --></h1>
+<ul>
+<li><a href="#motivations">Motivations</a></li>
+<li><a href="#stumbles-with-go">Stumbles with Go</a></li>
+<li><a href="#stumbles-with-python">Stumbles with Python</a></li>
+<li><a href="#how-rust-may-help-solve-these-problems">How Rust may help solve these problems</a></li>
+<li><a href="#stumbles-we-are-likely-to-have-with-rust">Stumbles we are likely to have with Rust</a></li>
+<li><a href="#learning-materials">Learning materials</a></li>
+<li><a href="#sub-pages">Sub Pages</a></li>
+<li><a href="#basic-project-structure">Basic project structure</a></li>
+<li><a href="#reference-material">Reference Material</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#code-documentation">Code documentation</a></li>
+<li><a href="#doc-links">Doc Links</a></li>
+<li><a href="#doc-examples">Doc Examples</a></li>
+<li><a href="#some-useful-cargo-plugins">Some Useful Cargo plugins</a></li>
+<li><a href="#crates-libraries">Crates (Libraries)</a></li>
+</ul>
+<h2 id="motivations">Motivations</h2>
+<h3 id="stumbles-with-go">Stumbles with Go</h3>
+<p>Projects: support-clerk, mi6</p>
+<ol>
+<li>lack of pre-defined project structures it was difficult to find one that
+   lasted and made sense to everyone on the team.</li>
+<li>#1 also lead to difficulty in code management and maintenance</li>
+<li><code>go mod</code> while initially a big win for the community finally having a
+   general package management tool has not gone as well as hoped and the
+   syntax becomes difficult due to custom DSL used instead of common
+   Lack of some typical data structures in addition to lack of generics lead
+   to lots of boilerplate that was being solved in ways that are not best practice.</li>
+<li>At least one library we were using has been broken randomly by
+   the author changing the name.</li>
+<li>Go build is a very simple build tool so it only builds a single binary
+   at a time. This leads to additional software to manage builds
+   like <code>Mage</code> to effectively handle building for Serverless applications.</li>
+</ol>
+<h3 id="stumbles-with-python">Stumbles with Python</h3>
+<p>Projects: herald, several other bot trials</p>
+<ol>
+<li>Deploy/Build methods</li>
+<li>Code being in production</li>
+<li>Lack of strict typing lead to many failures only discovered in production</li>
+</ol>
+<h3 id="how-rust-may-help-solve-these-problems">How Rust may help solve these problems</h3>
+<ol>
+<li><code>cargo</code> is the only package management tool and is heavily influenced by
+   the community. It uses TOML which is a common data structure used in
+   many cloud native software tools.</li>
+<li><code>cargo</code> is the tool that can do basically everything, it is the software
+   install tool like <code>pip</code> using <code>cargo install exa</code> for instance. It also
+   handles testing, doc building, project initialization and much more as
+   well as having plugin crates to extend functionality further.</li>
+<li><code>cargo</code> and <code>rust</code> having a set structure also allows cargo to manage
+   multiple binary builds on it's own by passing a <code>--bins</code> this will
+   simplify the build process for us significantly.</li>
+</ol>
+<h3 id="stumbles-we-are-likely-to-have-with-rust">Stumbles we are likely to have with Rust</h3>
+<ol>
+<li>Rust has a newer type of memory management called a <code>Ownership</code>. The concept
+   seems easy at first but it is a hurdle that could take a few weeks for
+   everyone to fully understand. The up side to this however is it allows
+   compile time checks of memory management so that null pointers are
+   rare occurrences in production.</li>
+</ol>
+<h2 id="learning-materials">Learning materials</h2>
+<p>Good places to get started learning Rust from the basics of
+installation to async programming and procedural macros.</p>
+<ul>
+<li>[<code>Official Book Online</code>]</li>
+<li>[<code>Official Book Kindle/Paperback</code>]</li>
+<li>[<code>Cargo Book</code>]</li>
+<li>[<code>Build a CLI app</code>]</li>
+</ul>
+<h2 id="sub-pages">Sub Pages</h2>
+<ul>
+<li>[<code>Cargo</code>]</li>
+<li>[<code>Crates</code>]</li>
+<li>[<code>Language Features</code>]</li>
+<li>[<code>Patterns</code>]</li>
+</ul>
+<h2 id="basic-project-structure">Basic project structure</h2>
+<h2 id="reference-material">Reference Material</h2>
+<p>These links will be more focused on places to quickly look up info
+including compiler errors and CLI commands.</p>
+<ul>
+<li>[<code>Rust By Example</code>]</li>
+<li>[<code>Compiler Error Index</code>]</li>
+</ul>
+<h2 id="testing">Testing</h2>
+<p>Rust gives a few ways to do testing including typical unit and integration
+testing as well as a great doc testing feature.</p>
+<ul>
+<li>[<code>Rust By Example - Testing</code>]</li>
+</ul>
+<h2 id="code-documentation">Code documentation</h2>
+<p>Rust provides a full markdown engine for code documentation using a <code>///</code> block.
+In you can document the crate and submodules with markdown using <code>//!</code> that
+summarizes usage of the crate or module.</p>
+<h3 id="doc-links">Doc Links</h3>
+<ul>
+<li>[<code>Rust By Example - Documentation</code>]</li>
+</ul>
+<h3 id="doc-examples">Doc Examples</h3>
+<pre><code class="rust">/// A human being is represented here
+pub struct Person {
+    /// A person must have a name, no matter how much Juliet may hate it
+    name: String,
+}
+
+impl Person {
+    /// Returns a person with the name given them
+    ///
+    /// # Arguments
+    ///
+    /// * `name` - A string slice that holds the name of the person
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// // You can have rust code between fences inside the comments
+    /// // If you pass --test to Rustdoc, it will even test it for you!
+    /// use doc::Person;
+    /// let person = Person::new(&quot;name&quot;);
+    /// ```
+    pub fn new(name: &amp;str) -&gt; Person {
+        Person {
+            name: name.to_string(),
+        }
+    }
+
+    /// Gives a friendly hello!
+    ///
+    /// Says &quot;Hello, [name]&quot; to the `Person` it is called on.
+    pub fn hello(&amp; self) {
+        println!(&quot;Hello, {}!&quot;, self.name);
+    }
+}
+</code></pre>
+
+<h2 id="some-useful-cargo-plugins">Some Useful Cargo plugins</h2>
+<p>These add extra commands to cargo that make it even more useful!</p>
+<ul>
+<li>[<code>cargo-add</code>] - Add dependencies to your Cargo.toml without having to
+  manually edit the file.</li>
+</ul>
+<p><code>console
+  $ cargo install cargo-add --force
+    Updating crates.io index
+  Installing cargo-add v0.2.0
+    ...
+    Finished release [optimized] target(s) in 14.65s
+   Replacing /Users/reynn/.cargo/bin/cargo-add
+  $ cargo add clap
+  $ cargo add clap --version '~2.3'</code></p>
+<h2 id="crates-libraries">Crates (Libraries)</h2>
+<p>See [] for a complete run down of crates.</p>
+<!-- Link section -->
+
+
+</section>
+</div> <!-- end of search-noresults -->
+<div class="search-results">
+<div class="has-results">
+
+<h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+<ul class="search-results-list"></ul>
+
+</div> <!-- end of has-results -->
+<div class="no-results">
+
+<h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+
+</div> <!-- end of no-results -->
+</div> <!-- end of search-results -->
+</div> <!-- end of book-search-results -->
+
+</div> <!-- end of page-inner -->
+</div> <!-- end of page-wrapper -->
+
+</div> <!-- end of body-inner -->
+
+</div> <!-- end of book-body -->
+<script src="./js/main.js"></script>
+<script src="search/main.js"></script>
+<script src="./js/gitbook.min.js"></script>
+<script src="./js/theme.min.js"></script>
+</body>
+</html>

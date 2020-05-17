@@ -1,0 +1,9 @@
+site_name: Rust for Delivery Architecture
+nav:
+  - Cargo: cargo.md
+  - Best Practices: best_practices.md
+  - Crates: crates.md
+  - Features: features.md
+  - Patterns: patterns.md
+theme:
+  name: material
