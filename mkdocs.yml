@@ -1,4 +1,9 @@
 site_name: Rust for Delivery Architecture
+repo_url: https://github.com/reynn/rust-language
+site_author: Nic Patterson
+docs_dir: markdown
+site_dir: docs
+use_directory_urls: True
 nav:
   - Cargo: cargo.md
   - Best Practices: best_practices.md
@@ -7,3 +12,7 @@ nav:
   - Patterns: patterns.md
 theme:
   name: material
+markdown_extensions:
+  - smarty
+  - toc:
+      permalink: True
