@@ -23,6 +23,7 @@
 These add extra commands to cargo that make it even more useful!
 
 #### Cargo Add
+
 - [`cargo-add`] - Add dependencies to your Cargo.toml without having to
   manually edit the file.
 
