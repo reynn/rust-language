@@ -81,6 +81,7 @@ installation to async programming and procedural macros.
 - [`Crates`]
 - [`Language Features`]
 - [`Patterns`]
+- [`Setup`]
 
 ## Basic project structure
 
@@ -179,4 +180,9 @@ See [] for a complete run down of crates.
 [`compiler error index`]: https://doc.rust-lang.org/error-index.html
 [`rust by example - documentation`]: https://doc.rust-lang.org/stable/rust-by-example/testing.html
 [`build a cli app`]: https://rust-cli.github.io/book/index.html
-[`features.md`]: /features.md
+[`cargo`]: /cargo.md
+[`crates`]: /crates.md
+[`language features`]: /features.md
+[`patterns`]: /patterns.md
+[`setup`]: /setup/general.md
+[`cargo book`]: https://doc.rust-lang.org/cargo/index.html
