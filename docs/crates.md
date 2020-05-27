@@ -11,7 +11,7 @@
 ## error_chain!
 
 [![error_chain](https://img.shields.io/crates/v/error_chain.svg?style=flat-square&label=error_chain%20crates.io)](https://crates.io/crates/error_chain)
-[![error_chain](https://img.shields.io/crates/v/error_chain.svg?style=flat-square&label=error_chain%20crates.io)](https://crates.io/crates/error_chain)
+[![error_chain](https://img.shields.io/crates/v/error_chain.svg?style=flat-square&label=error_chain%20docs.rs)](https://docs.rs/error_chain)
 
 Documentation for error_chain can be found at [docs.rs](https://docs.rs/error-chain).
 
@@ -53,11 +53,11 @@ Serde provides an interface between data structures. It doesn't do any of the pa
 
 We will likely use the following crates to actual handle the parsing:
 
-| Format | Crate                                                                                                                                               |
-| ------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| TOML   | [![toml](https://img.shields.io/crates/v/toml.svg?style=flat-square&label=toml%20crates.io)](https://crates.io/crates/toml)                         |
-| YAML   | [![serde_yaml](https://img.shields.io/crates/v/serde_yaml.svg?style=flat-square&label=serde_yaml%20crates.io)](https://crates.io/crates/serde_yaml) |
-| JSON   | [![serde_json](https://img.shields.io/crates/v/serde_json.svg?style=flat-square&label=serde_json%20crates.io)](https://crates.io/crates/serde_json) |
+| Format | Crate                                                                                                                         |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| TOML   | [![toml](https://img.shields.io/crates/v/toml.svg?style=flat-square&label=)](https://crates.io/crates/toml)                   |
+| YAML   | [![serde_yaml](https://img.shields.io/crates/v/serde_yaml.svg?style=flat-square&label=)](https://crates.io/crates/serde_yaml) |
+| JSON   | [![serde_json](https://img.shields.io/crates/v/serde_json.svg?style=flat-square&label=)](https://crates.io/crates/serde_json) |
 
 ## reqwest
 

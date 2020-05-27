@@ -180,7 +180,7 @@ See [crates.md](crates.md) for a complete run down of crates.
 [`compiler error index`]: https://doc.rust-lang.org/error-index.html
 [`rust by example - documentation`]: https://doc.rust-lang.org/stable/rust-by-example/testing.html
 [`build a cli app`]: https://rust-cli.github.io/book/index.html
-[`cargo-add`]: https://github.com/killercup/cargo-edit
+[`cargo-edit`]: https://github.com/killercup/cargo-edit
 [`cargo`]: cargo.md
 [`crates`]: crates.md
 [`language features`]: features.md
