@@ -39,14 +39,8 @@ Thats it! You are now ready to write and execute Rust code.
 
 ## Setup your IDE of choice
 
-| IDE                | Installation                                            | Rust Config               |
-| ------------------ | ------------------------------------------------------- | ------------------------- |
-| Visual Studio Code | [code.visualstudio.com](https://code.visualstudio.com/) | [Setup](/setup/vscode.md) |
-| Vim                | [vim.org](https://vim.org/)                             | [Setup](/setup/vim.md)    |
-| NeoVim             | [vim.org](https://neovim.io/)                           | [Setup](/setup/vim.md)    |
-
-<!-- Links -->
-
-[`rustup`]: https://rustup.rs/
-[`visual studio code`]: /setup/vscode.md
-[`vim or neovim`]: /setup/vim.md
+| IDE                | Installation                                            | Rust Config        |
+| ------------------ | ------------------------------------------------------- | ------------------ |
+| Visual Studio Code | [code.visualstudio.com](https://code.visualstudio.com/) | [Setup](vscode.md) |
+| Vim                | [vim.org](https://vim.org/)                             | [Setup](vim.md)    |
+| NeoVim             | [vim.org](https://neovim.io/)                           | [Setup](vim.md)    |
