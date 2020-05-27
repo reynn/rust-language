@@ -44,3 +44,7 @@ Thats it! You are now ready to write and execute Rust code.
 | Visual Studio Code | [code.visualstudio.com](https://code.visualstudio.com/) | [Setup](vscode.md) |
 | Vim                | [vim.org](https://vim.org/)                             | [Setup](vim.md)    |
 | NeoVim             | [vim.org](https://neovim.io/)                           | [Setup](vim.md)    |
+
+<!-- Links -->
+
+[`rustup`]: https://rustup.rs

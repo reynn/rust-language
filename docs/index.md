@@ -153,23 +153,23 @@ impl Person {
 
 These add extra commands to cargo that make it even more useful!
 
-- [`cargo-add`] - Add dependencies to your Cargo.toml without having to
+- [`cargo-edit`] - Add dependencies to your Cargo.toml without having to
   manually edit the file.
 
   ```console
-  $ cargo install cargo-add --force
+  $ cargo install cargo-edit
     Updating crates.io index
-  Installing cargo-add v0.2.0
+  Installing cargo-edit v0.2.0
     ...
     Finished release [optimized] target(s) in 14.65s
    Replacing /Users/reynn/.cargo/bin/cargo-add
   $ cargo add clap
-  $ cargo add clap --version '~2.3'
+  $ cargo add test-case --dev # Dev only development
   ```
 
 ## Crates (Libraries)
 
-See [] for a complete run down of crates.
+See [crates.md](crates.md) for a complete run down of crates.
 
 <!-- Link section -->
 
@@ -180,9 +180,10 @@ See [] for a complete run down of crates.
 [`compiler error index`]: https://doc.rust-lang.org/error-index.html
 [`rust by example - documentation`]: https://doc.rust-lang.org/stable/rust-by-example/testing.html
 [`build a cli app`]: https://rust-cli.github.io/book/index.html
-[`cargo`]: /cargo.md
-[`crates`]: /crates.md
-[`language features`]: /features.md
-[`patterns`]: /patterns.md
-[`setup`]: /setup/general.md
+[`cargo-add`]: https://github.com/killercup/cargo-edit
+[`cargo`]: cargo.md
+[`crates`]: crates.md
+[`language features`]: features.md
+[`patterns`]: patterns.md
+[`setup`]: setup/general.md
 [`cargo book`]: https://doc.rust-lang.org/cargo/index.html
