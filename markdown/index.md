@@ -1,14 +1,5 @@
 # Rust Resources <!-- omit in toc -->
 
-- [Motivations](#motivations)
-  - [Stumbles with Go](#stumbles-with-go)
-  - [Issues with Python](#issues-with-python)
-  - [How Rust may help solve these problems](#how-rust-may-help-solve-these-problems)
-  - [Stumbles we are likely to have with Rust](#stumbles-we-are-likely-to-have-with-rust)
-- [Learning materials](#learning-materials)
-- [Sub Topics](#sub-topics)
-- [Reference Material](#reference-material)
-
 ## Motivations
 
 ### Stumbles with Go
@@ -53,7 +44,7 @@ Projects: herald, several other bot trials
 
 ### Stumbles we are likely to have with Rust
 
-1. Rust has a newer type of memory management called a `Ownership`. The concept
+1. Rust has a newer type of memory management called a [`Ownership`]. The concept
    seems easy at first but it is a hurdle that could take a few weeks for
    everyone to fully understand. The up side to this however is it allows
    compile time checks of memory management so that null pointers are
@@ -65,10 +56,10 @@ Good places to get started learning Rust from the basics of
 installation to async programming and procedural macros. I highly recommend
 reading the official book through first.
 
-- [`Official Book Online`]
-- [`Official Book Kindle/Paperback`]
-- [`Cargo Book`]
-- [`Build a CLI app`]
+- [Official Book Online]
+- [Official Book Kindle/Paperback]
+- [Cargo Book]
+- [Build a CLI app]
 
 ## Sub Topics
 
@@ -79,26 +70,25 @@ reading the official book through first.
 - [Documentation](documentation.md)
 - [Crates](crates.md)
 - [Cargo](cargo.md)
-- [Patterns](patterns.md)
 
 ## Reference Material
 
 These links will be more focused on places to quickly look up info
 including compiler errors and CLI commands.
 
-- [`Rust By Example`]
-- [`Compiler Error Index`]
-- [`Rust Cheat Sheet`]
+- [Rust By Example]
+- [Compiler Error Index]
+- [Rust Cheat Sheet]
 
 <!-- Link section -->
 
-[`official book online`]: https://doc.rust-lang.org/book/
-[`official book kindle/paperback`]: https://www.amazon.com/Rust-Programming-Language-Covers-2018-ebook/dp/B07SRQ97RD
-[`rust by example`]: https://doc.rust-lang.org/stable/rust-by-example/
-[`rust by example - testing`]: https://doc.rust-lang.org/stable/rust-by-example/testing.html
-[`compiler error index`]: https://doc.rust-lang.org/error-index.html
-[`rust by example - documentation`]: https://doc.rust-lang.org/stable/rust-by-example/testing.html
-[`build a cli app`]: https://rust-cli.github.io/book/index.html
-[`cargo-edit`]: https://github.com/killercup/cargo-edit
-[`cargo book`]: https://doc.rust-lang.org/cargo/index.html
-[`rust cheat sheet`]: https://cheats.rs/
+[official book online]: https://doc.rust-lang.org/book/
+[official book kindle/paperback]: https://www.amazon.com/Rust-Programming-Language-Covers-2018-ebook/dp/B07SRQ97RD
+[rust by example]: https://doc.rust-lang.org/stable/rust-by-example/
+[rust by example - testing]: https://doc.rust-lang.org/stable/rust-by-example/testing.html
+[compiler error index]: https://doc.rust-lang.org/error-index.html
+[rust by example - documentation]: https://doc.rust-lang.org/stable/rust-by-example/testing.html
+[build a cli app]: https://rust-cli.github.io/book/index.html
+[cargo-edit]: https://github.com/killercup/cargo-edit
+[cargo book]: https://doc.rust-lang.org/cargo/index.html
+[rust cheat sheet]: https://cheats.rs/

@@ -1,18 +1,8 @@
 # Language Features <!-- omit in toc -->
 
-- [Ownership and Borrowing](#ownership-and-borrowing)
-- [`Option` and `Result`](#option-and-result)
-- [Lazy iterators](#lazy-iterators)
-- [Macros](#macros)
-  - [Declarative Macros](#declarative-macros)
-  - [Procedural Macros](#procedural-macros)
-- [Enums](#enums)
-  - [Basic enum example](#basic-enum-example)
-  - [Enum Variants](#enum-variants)
-
 ## Ownership and Borrowing
 
-[`Ownership Chapter`]
+[Ownership Chapter]
 
 Rust does not force you to manage memory directly using `alloc` and `dealloc`, it also does not use a
 Garbage collection system such as Java and Go. Instead when variables go out of scope they are cleaned up.
@@ -49,9 +39,9 @@ To learn more, run the command again with --verbose.
 
 ## `Option` and `Result`
 
-[`Option Chapter`]
+[Option Chapter]
 
-[`Result Chapter`]
+[Result Chapter]
 
 A typical pattern in Go is to return a type + an error like shown in the following snippet
 
@@ -129,7 +119,7 @@ in results we can stop calling the API since we wont care about the rest.
 
 ## Macros
 
-Macros provide a form of code generation to reduce boilerplate code. The earliest 
+Macros provide a form of code generation to reduce boilerplate code. The earliest
 macro a new Rust dev will use is the `println!` macro.
 
 ```rust
@@ -143,22 +133,21 @@ println!("Hello World");
 
 ### Declarative Macros
 
-[`Declarative Macros Chapter`]
+[Declarative Macros Chapter]
 
 Declarative macros can be defined anywhere using the `macro_rules!` macro.
 This is a good candidate for basic code that must be reused in several places.
 
 ### Procedural Macros
 
-[`Procedural Macros Chapter`]
+[Procedural Macros Chapter]
 
 Procedural macros accept some code as an input, operate on that code, and produce some code as an output rather than matching against patterns and replacing the code with other code as declarative macros do.
-
 
 ## Enums
 
 Enums exist in a lot of languages but were not properly supported in Go.
-Rust expands on normal enums by having Enum variants as well. The [`Enum Chapter`]
+Rust expands on normal enums by having Enum variants as well. The [Enum Chapter]
 in the Rust book has a really good intro on enums and how to define variants
 but at a high level overview.
 
@@ -208,9 +197,9 @@ enum IPAddress {
 
 <!-- Links below -->
 
-[`enum chapter`]: https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
-[`ownership chapter`]: https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html
-[`option chapter`]: https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html?highlight=option#the-option-enum-and-its-advantages-over-null-values
-[`result chapter`]: https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html
-[`Declarative Macros Chapter`]: https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming
-[`Procedural Macros Chapter`]: https://doc.rust-lang.org/book/ch19-06-macros.html#procedural-macros-for-generating-code-from-attributes
+[enum chapter]: https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
+[ownership chapter]: https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html
+[option chapter]: https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html?highlight=option#the-option-enum-and-its-advantages-over-null-values
+[result chapter]: https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html
+[declarative macros chapter]: https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming
+[procedural macros chapter]: https://doc.rust-lang.org/book/ch19-06-macros.html#procedural-macros-for-generating-code-from-attributes

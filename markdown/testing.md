@@ -1,16 +1,9 @@
 # Testing <!-- omit in toc -->
 
-- [Code example](#code-example)
-- [Unit Testing](#unit-testing)
-- [Integration testing](#integration-testing)
-- [Documentation testing](#documentation-testing)
-  - [Examples](#examples)
-- [Benchmarking](#benchmarking)
-
 Rust gives a few ways to do testing including typical unit and integration
 testing as well as a great doc testing feature.
 
-- [`Rust By Example - Testing`]
+- [Rust By Example - Testing]
 
 ## Code example
 
@@ -68,3 +61,5 @@ specific functions.
 ### Examples
 
 ## Benchmarking
+
+[rust by example - testing]: https://doc.rust-lang.org/stable/rust-by-example/testing.html

@@ -1,0 +1,802 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <meta name="author" content="Nic Patterson">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.2">
+    
+    
+      
+        <title>Language Features - Rust for Delivery Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a2408e81.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#language-features" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Rust for Delivery Architecture" class="md-header-nav__button md-logo" aria-label="Rust for Delivery Architecture">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Rust for Delivery Architecture
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Language Features
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/reynn/rust-language/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Rust for Delivery Architecture" class="md-nav__button md-logo" aria-label="Rust for Delivery Architecture">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Rust for Delivery Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/reynn/rust-language/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Setup
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Setup" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setup/general/" title="General" class="md-nav__link">
+      General
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setup/vim/" title="Vim/NeoVim" class="md-nav__link">
+      Vim/NeoVim
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setup/vscode/" title="VS Code" class="md-nav__link">
+      VS Code
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Language Features
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Language Features" class="md-nav__link md-nav__link--active">
+      Language Features
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ownership-and-borrowing" class="md-nav__link">
+    Ownership and Borrowing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-and-result" class="md-nav__link">
+    Option and Result
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazy-iterators" class="md-nav__link">
+    Lazy iterators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+    <nav class="md-nav" aria-label="Macros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declarative-macros" class="md-nav__link">
+    Declarative Macros
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedural-macros" class="md-nav__link">
+    Procedural Macros
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    Enums
+  </a>
+  
+    <nav class="md-nav" aria-label="Enums">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-enum-example" class="md-nav__link">
+    Basic enum example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum-variants" class="md-nav__link">
+    Enum Variants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../best_practices/" title="Best Practices" class="md-nav__link">
+      Best Practices
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../testing/" title="Testing" class="md-nav__link">
+      Testing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../documentation/" title="Documentation" class="md-nav__link">
+      Documentation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../crates/" title="Crates" class="md-nav__link">
+      Crates
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cargo/" title="Cargo" class="md-nav__link">
+      Cargo
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ownership-and-borrowing" class="md-nav__link">
+    Ownership and Borrowing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-and-result" class="md-nav__link">
+    Option and Result
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lazy-iterators" class="md-nav__link">
+    Lazy iterators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#macros" class="md-nav__link">
+    Macros
+  </a>
+  
+    <nav class="md-nav" aria-label="Macros">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declarative-macros" class="md-nav__link">
+    Declarative Macros
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedural-macros" class="md-nav__link">
+    Procedural Macros
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enums" class="md-nav__link">
+    Enums
+  </a>
+  
+    <nav class="md-nav" aria-label="Enums">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-enum-example" class="md-nav__link">
+    Basic enum example
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum-variants" class="md-nav__link">
+    Enum Variants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/reynn/rust-language/edit/master/docs/features.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="language-features">Language Features <!-- omit in toc --><a class="headerlink" href="#language-features" title="Permanent link">&para;</a></h1>
+<h2 id="ownership-and-borrowing">Ownership and Borrowing<a class="headerlink" href="#ownership-and-borrowing" title="Permanent link">&para;</a></h2>
+<p><a href="https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html">Ownership Chapter</a></p>
+<p>Rust does not force you to manage memory directly using <code>alloc</code> and <code>dealloc</code>, it also does not use a
+Garbage collection system such as Java and Go. Instead when variables go out of scope they are cleaned up.</p>
+<pre><code class="rust">fn main() {
+    let x = 10;
+    { // This is a closure and is a separate scope from the main func
+        let y = 20;
+        println!(&quot;x + y = {}&quot;, (x + y));
+    } // This is the end of the closure, y will be unavailable after this
+    println!(&quot;y is {}&quot;, y);
+}
+</code></pre>
+
+<p>When attempting to run this code you will get the following error</p>
+<pre><code class="shell">$ cargo run
+Compiling rust-basic-app-template v0.1.0 (/Users/reynn/git/github.com/reynn/rust-basic-app-template)
+error[E0425]: cannot find value `y` in this scope
+ --&gt; src/main.rs:8:25
+  |
+8 |     println!(&quot;y is {}&quot;, y);
+  |                         ^ help: a local variable with a similar name exists: `x`
+
+error: aborting due to previous error
+
+For more information about this error, try `rustc --explain E0425`.
+error: could not compile `rust-basic-app-template`.
+
+To learn more, run the command again with --verbose.
+</code></pre>
+
+<h2 id="option-and-result"><code>Option</code> and <code>Result</code><a class="headerlink" href="#option-and-result" title="Permanent link">&para;</a></h2>
+<p><a href="https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html?highlight=option#the-option-enum-and-its-advantages-over-null-values">Option Chapter</a></p>
+<p><a href="https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html">Result Chapter</a></p>
+<p>A typical pattern in Go is to return a type + an error like shown in the following snippet</p>
+<pre><code class="golang">// This function wont fail the program but still has to return an error type
+func add(a, b: int) (int, error) {
+    if b &lt; 0 || a &lt; 0 {
+        return 0, fmt.Error(&quot;Not going to add a negative number&quot;)
+    }
+    return a + b
+}
+
+// This function could cause the app to fail if not successful which makes sense for an error
+func GetClient(auth *Authenticator) (*Client, error) {
+    if auth == nil {
+        return nil
+    }
+    // newClient is a method that initializes the client and ensures successful auth
+    // signature is similar to this GetClient method
+    return newClient(auth)
+}
+
+func main() {
+    res, err := add(1, -5)
+    if err != nil {
+        fmt.Printf(&quot;Failed to add the numbers together %v&quot;, err)
+    } else {
+        fmt.Printf(&quot;Result is %d&quot;, res)
+    }
+
+    if client, cErr := GetClient(AnonAuth{}); err != {
+        executeLoop(client)
+    } else {
+        panic(cErr)
+    }
+}
+</code></pre>
+
+<p>In Rust this is made easier by the <code>Option</code> and <code>Result</code> types.</p>
+<pre><code class="rust">fn add(a: i32, b: i32) -&gt; Option&lt;i32&gt; {
+    Some(a+b)
+}
+
+fn get_client(auth: &amp;Authenticator) -&gt; Result&lt;Client&gt; {
+    Ok(Client::new(auth)?) // shortcut, `?` will return out the error when the function returns a Result
+}
+
+// Result&lt;()&gt; is a void result, this is so you can still use the ? shortcut in main
+fn main() -&gt; Result&lt;()&gt; {
+    if let Some(res) = add(1, 80) {
+        assert_eq!(res, 81);
+    };
+
+    match get_client(auth::Anonymous()) {
+        Ok(c) -&gt; c.whoami()?,
+        Err(e) -&gt; {
+            eprintln!(&quot;Error creating a new client {}&quot;, e);
+            std::process::exit(2);
+        }
+    }
+}
+</code></pre>
+
+<h2 id="lazy-iterators">Lazy iterators<a class="headerlink" href="#lazy-iterators" title="Permanent link">&para;</a></h2>
+<p>Similar to generators in Python where the call to <code>.iter()</code> just returns the
+option to retrieve next instead of actually getting the data.
+This can lead to reduction in API calls since paging doesn&rsquo;t have to happen up front.</p>
+<p>Some real examples from our existing responsibilities.
+Lookups to GitHub for teams can be sorted and once <code>bh-</code> teams no longer show
+in results we can stop calling the API since we wont care about the rest.</p>
+<h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h2>
+<p>Macros provide a form of code generation to reduce boilerplate code. The earliest
+macro a new Rust dev will use is the <code>println!</code> macro.</p>
+<pre><code class="rust">// This is provided as a convenient macro
+println!(&quot;Hello World&quot;);
+// The compilation will expand this macro to something like
+{
+  $crate::io::_print(std::fmt::Arguments::new_v1(&amp;[], &amp;[]));
+}
+</code></pre>
+
+<h3 id="declarative-macros">Declarative Macros<a class="headerlink" href="#declarative-macros" title="Permanent link">&para;</a></h3>
+<p><a href="https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming">Declarative Macros Chapter</a></p>
+<p>Declarative macros can be defined anywhere using the <code>macro_rules!</code> macro.
+This is a good candidate for basic code that must be reused in several places.</p>
+<h3 id="procedural-macros">Procedural Macros<a class="headerlink" href="#procedural-macros" title="Permanent link">&para;</a></h3>
+<p><a href="https://doc.rust-lang.org/book/ch19-06-macros.html#procedural-macros-for-generating-code-from-attributes">Procedural Macros Chapter</a></p>
+<p>Procedural macros accept some code as an input, operate on that code, and produce some code as an output rather than matching against patterns and replacing the code with other code as declarative macros do.</p>
+<h2 id="enums">Enums<a class="headerlink" href="#enums" title="Permanent link">&para;</a></h2>
+<p>Enums exist in a lot of languages but were not properly supported in Go.
+Rust expands on normal enums by having Enum variants as well. The <a href="https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html">Enum Chapter</a>
+in the Rust book has a really good intro on enums and how to define variants
+but at a high level overview.</p>
+<h3 id="basic-enum-example">Basic enum example<a class="headerlink" href="#basic-enum-example" title="Permanent link">&para;</a></h3>
+<pre><code class="rust">/// Define a basic enum to switch between IP v4 and v6.
+enum AddressVersion {
+    V4,
+    V6,
+}
+struct IPAddress {
+    version: AddressVersion,
+    address: String,
+}
+impl IPAddress {
+    fn new(address: String) -&gt; Result&lt;Self&gt; {
+        /// parse_version isn't defined here but the signature is
+        /// parse_version(address: &amp;str) -&gt; Result(AddressVersion)
+        if let Ok(address) = parse_version(address)? {
+            Ok(
+                Self {
+                    version,
+                    address,
+                }
+            )
+        }
+    }
+}
+
+#[cfg(test)]
+mod address_tests {
+    fn test_basic() {
+    }
+}
+</code></pre>
+
+<h3 id="enum-variants">Enum Variants<a class="headerlink" href="#enum-variants" title="Permanent link">&para;</a></h3>
+<pre><code class="rust">/// Simplify the basic example with a variant
+enum IPAddress {
+    V4(String),
+    V6(String),
+}
+</code></pre>
+
+<!-- Links below -->
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../setup/vscode/" title="VS Code" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                VS Code
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../best_practices/" title="Best Practices" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Best Practices
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

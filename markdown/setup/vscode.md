@@ -11,7 +11,7 @@ Install the following extensions using CMD+P then type `ext install ...` to inst
 | ------------------- | --------------------------------------------------------- |
 | rust-lang.rust      | Main Rust component, can use Rust Analyzer or RLS         |
 | serayuzgur.crates   | Adds version and crate validation when viewing Cargo.toml |
-| bungcip.better-toml |                                                           |
+| bungcip.better-toml | Provides better syntax highlighting for TOML files        |
 
 Optionally update the `rust-client.engine` to `rust-analyzer`. Rust Analyzer is a future replacement for RLS and provides better autocomplete.
 

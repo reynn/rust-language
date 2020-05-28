@@ -5,9 +5,9 @@
 
 ## Install Rust and Cargo
 
-Best way to bootstrap your development is using [`Rustup`].
+Best way to bootstrap your development is using [Rustup].
 
-```shell
+```console
 $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 info: downloading installer
 
@@ -47,4 +47,4 @@ Thats it! You are now ready to write and execute Rust code.
 
 <!-- Links -->
 
-[`rustup`]: https://rustup.rs
+[rustup]: https://rustup.rs

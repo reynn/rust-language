@@ -1,14 +1,8 @@
 # Rust Crates <!-- omit in toc -->
 
-- [error_chain!](#error_chain)
-- [Logging](#logging)
-- [chrono](#chrono)
-- [clap](#clap)
-- [serde](#serde)
-- [reqwest](#reqwest)
-- [warp](#warp)
+## Error Handling
 
-## error_chain!
+### Error Chain
 
 [![error_chain](https://img.shields.io/crates/v/error_chain.svg?style=flat-square&label=error_chain%20crates.io)](https://crates.io/crates/error_chain)
 [![error_chain](https://img.shields.io/crates/v/error_chain.svg?style=flat-square&label=error_chain%20docs.rs)](https://docs.rs/error_chain)
@@ -16,6 +10,20 @@
 Documentation for error_chain can be found at [docs.rs](https://docs.rs/error-chain).
 
 Error chain is designed to simplify error handling by providing a simplified `Result` enum as well as `bail!` and `ensure!` macros.
+Error chain is part of the Rust nursery, this means there is a chance of it being included in future official releases.
+
+### Anyhow
+
+[![anyhow](https://img.shields.io/crates/v/anyhow.svg?style=flat-square&label=anyhow%20crates.io)](https://crates.io/crates/anyhow)
+[![anyhow](https://img.shields.io/crates/v/anyhow.svg?style=flat-square&label=anyhow%20docs.rs)](https://docs.rs/anyhow)
+
+Anyhow provides a simpler API compared to error-chain by leaving custom error handling to the developer.
+Where error_chain uses a macro to override the default std::result::Result anyhow provides its own version of Result
+
+[![thiserror](https://img.shields.io/crates/v/thiserror.svg?style=flat-square&label=thiserror%20crates.io)](https://crates.io/crates/thiserror)
+[![thiserror](https://img.shields.io/crates/v/thiserror.svg?style=flat-square&label=thiserror%20docs.rs)](https://docs.rs/thiserror)
+
+Anyhow is likely going to be used with another library like `thiserror` that provides a wrapper around the `std::error::Error` trait
 
 ## Logging
 

@@ -1,9 +1,5 @@
 # Documentation <!-- omit in toc -->
 
-- [Overview](#overview)
-- [References](#references)
-- [Examples](#examples)
-
 ## Overview
 
 Rust provides a full markdown engine for code documentation using a `///` block.
@@ -12,7 +8,7 @@ summarizes usage of the crate or module.
 
 ## References
 
-- [`Rust By Example - Documentation`]
+- [Rust By Example - Documentation]
 
 ## Examples
 
@@ -52,3 +48,5 @@ impl Person {
     }
 }
 ````
+
+[Rust By Example - Documentation]:

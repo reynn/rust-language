@@ -5,11 +5,17 @@ docs_dir: markdown
 site_dir: docs
 use_directory_urls: True
 nav:
-  - Cargo: cargo.md
+  - Home: index.md
+  - Setup:
+      - General: setup/general.md
+      - Vim/NeoVim: setup/vim.md
+      - VS Code: setup/vscode.md
+  - Language Features: features.md
   - Best Practices: best_practices.md
+  - Testing: testing.md
+  - Documentation: documentation.md
   - Crates: crates.md
-  - Features: features.md
-  - Patterns: patterns.md
+  - Cargo: cargo.md
 theme:
   name: material
 markdown_extensions:

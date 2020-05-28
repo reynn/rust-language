@@ -1,16 +1,5 @@
 # Best Practices <!-- omit in toc -->
 
-- [Tooling](#tooling)
-  - [Rustfmt](#rustfmt)
-  - [Clippy](#clippy)
-- [Coding style](#coding-style)
-  - [Use Expressions](#use-expressions)
-  - [Iterators over loops](#iterators-over-loops)
-  - [Enums over boolean or ints](#enums-over-boolean-or-ints)
-  - [Handle [`Option`] and [`Result`] with `?`](#handle-option-and-result-with-)
-  - [Avoid [`unsafe!`] code](#avoid-unsafe-code)
-  - [Implement traits](#implement-traits)
-
 ## Tooling
 
 Between the official Rust and Cargo tooling and the amazing community involved with Rust
@@ -51,7 +40,13 @@ $ cargo clippy -- --fix # Autofix mistakes
 
 ## Coding style
 
-Generally speaking follow guidelines for naming and coding styles from the [`API Guidelines`] page.
+Generally speaking follow guidelines for naming and coding styles from the [API Guidelines] page.
+
+### Use preludes when possible
+
+Many Rust crates provided a convenient import option called [preludes]. For instance when working with IO
+you can import `std::io::prelude::*;` rather than importing the following: `std::io::{BufRead,Read,Seek,Write};`.
+Anyone can implement preludes as a way to simplify imports.
 
 ### Use Expressions
 
@@ -84,12 +79,34 @@ In Rust it is preferred to use the following:
 let e = if a { "hello" } else { "world" };
 // or
 let server_list = ansible::get_hosts_from_inventory("$HOME/inventory.yaml");
-let server: Server = server_list.iter().filter(|x| x.name == "expected_host").first();
+let server: Server = server_list
+    .iter()
+    .filter(|x| x.name == "expected_host")
+    .first();
 ```
 
 ### Iterators over loops
 
 We often have to call APIs or similar tasks that may fail and use a loop to set a variable.
+
+```groovy
+// here we are getting a list of results from GitHub
+// and creating a list if we want to use them
+def allRepos = github.get_repo_list()
+def requestedRepos = []
+for (repo in allRepos) {
+  if (repo.name.startswith('hello')) {
+    requestedRepos.add(repo)
+  }
+}
+```
+
+```rust
+let requested_repos = github.get_repo_list()
+  .iter()
+  .filter(|x| x.name.starts_with("hello"))
+  .collect::<Vec<_>>();
+```
 
 ### Enums over boolean or ints
 
@@ -105,9 +122,9 @@ fn http_get(url: &str) -> Result<&str> {
 }
 ```
 
-### Handle [`Option`] and [`Result`] with `?`
+### Handle `Option` and `Result` with `?`
 
-Adjust code to return a Result even if it is a [`Void ()`] result. This allows changing
+Adjust code to return a [Result] even if it is a Void result. This allows changing
 
 ```rust
 fn main() {
@@ -117,14 +134,14 @@ fn main() {
 //
 // TO
 //
-fn main() -> Result<()> {
+fn main() -> Result<()> { // () is our void return type
   // The error from read_to_string will bubble up to the Result by using `?`
   let _conf_file = std::fs::read_to_string("config.yaml")?;
   println!("Successfully loaded config file");
 }
 ```
 
-### Avoid [`unsafe!`] code
+### Avoid unsafe! code
 
 Unsafe code is rarely needed and the memory implications require considerable resources
 to verify. If an external crate uses it and has a valid reason it can be considered if
@@ -135,14 +152,15 @@ find an alternate crate.
 
 As a general rule you should implement the following traits:
 
-- [`Debug`]
-- [`Display`]
+- [Debug]
+- [Display]
 
 <!-- Links -->
 
-[`debug`]: https://doc.rust-lang.org/std/fmt/trait.Debug.html
-[`display`]: https://doc.rust-lang.org/std/fmt/trait.Display.html
-[`result`]: https://doc.rust-lang.org/stable/std/result/
-[`option`]: https://doc.rust-lang.org/stable/std/option/
-[`unsafe!`]: https://doc.rust-lang.org/stable/std/keyword.unsafe.html
-[`api guidelines`]: https://rust-lang.github.io/api-guidelines/checklist.html
+[debug]: https://doc.rust-lang.org/std/fmt/trait.Debug.html
+[display]: https://doc.rust-lang.org/std/fmt/trait.Display.html
+[result]: https://doc.rust-lang.org/stable/std/result/
+[option]: https://doc.rust-lang.org/stable/std/option/
+[unsafe!]: https://doc.rust-lang.org/stable/std/keyword.unsafe.html
+[api guidelines]: https://rust-lang.github.io/api-guidelines/checklist.html
+[preludes]: https://doc.rust-lang.org/std/prelude/
