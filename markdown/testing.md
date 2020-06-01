@@ -7,7 +7,7 @@ testing as well as a great doc testing feature.
 
 ## Code example
 
-````rust
+```rust
 /// A human being is represented here
 pub struct Person {
     /// A person must have a name, no matter how much Juliet may hate it

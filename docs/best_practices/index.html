@@ -589,27 +589,27 @@ and see what you can find that work well and can improve the team workflow.</p>
 <p>Use of the <code>rustfmt</code> tool will alert you to any formatting errors,
 your commits should run this cleanly. Rustfmt is conveniently available
 as a Cargo subcommand.</p>
-<pre><code class="shell"># Rustfmt is not included as a core piece of Cargo, we must install it first
+<div class="highlight"><pre><span></span><code><span class="c1"># Rustfmt is not included as a core piece of Cargo, we must install it first</span>
 $ rustup add component rustfmt
-# this does install a binary for rustfmt, calling it with Rust is easier
-# Now that it is installed we can run it
-$ cargo fix # Basic command
-# Compiles the program, if no lint warnings exist no output
-$ cargo fix --allow-dirty --allow-staged # Run fix even if there are pending Git changes
-# Compiles the program, if no lint warnings exist no output
-</code></pre>
+<span class="c1"># this does install a binary for rustfmt, calling it with Rust is easier</span>
+<span class="c1"># Now that it is installed we can run it</span>
+$ cargo fix <span class="c1"># Basic command</span>
+<span class="c1"># Compiles the program, if no lint warnings exist no output</span>
+$ cargo fix --allow-dirty --allow-staged <span class="c1"># Run fix even if there are pending Git changes</span>
+<span class="c1"># Compiles the program, if no lint warnings exist no output</span>
+</code></pre></div>
 
 <h3 id="clippy">Clippy<a class="headerlink" href="#clippy" title="Permanent link">&para;</a></h3>
 <p>Clippy is an additional linting tool that helps catch common mistakes.
 Clippy can also fix some of the mistakes automatically with the <code>--fix</code> flag.</p>
-<pre><code class="shell"># Clippy is not included as a core piece of Cargo, we must install it first
+<div class="highlight"><pre><span></span><code><span class="c1"># Clippy is not included as a core piece of Cargo, we must install it first</span>
 $ rustup add component clippy
-# Now that it is installed we can run it
-$ cargo clippy # Basic
-# Output will be any mistakes it finds or nothing if code is clean.
-$ cargo clippy -- --fix # Autofix mistakes
-# Output will be any mistakes it finds or nothing if code is clean.
-</code></pre>
+<span class="c1"># Now that it is installed we can run it</span>
+$ cargo clippy <span class="c1"># Basic</span>
+<span class="c1"># Output will be any mistakes it finds or nothing if code is clean.</span>
+$ cargo clippy -- --fix <span class="c1"># Autofix mistakes</span>
+<span class="c1"># Output will be any mistakes it finds or nothing if code is clean.</span>
+</code></pre></div>
 
 <h2 id="coding-style">Coding style<a class="headerlink" href="#coding-style" title="Permanent link">&para;</a></h2>
 <p>Generally speaking follow guidelines for naming and coding styles from the <a href="https://rust-lang.github.io/api-guidelines/checklist.html">API Guidelines</a> page.</p>
@@ -620,80 +620,80 @@ Anyone can implement preludes as a way to simplify imports.</p>
 <h3 id="use-expressions">Use Expressions<a class="headerlink" href="#use-expressions" title="Permanent link">&para;</a></h3>
 <p>A typical thing we see in some code bases for setting a variable to something based
 on a different variable looks like this:</p>
-<pre><code class="groovy">// syntax highlighting is for Groovy but this is typical of various languages
-def e;
+<div class="highlight"><pre><span></span><code><span class="c1">// syntax highlighting is for Groovy but this is typical of various languages</span>
+<span class="kt">def</span> <span class="n">e</span><span class="o">;</span>
 
-if a {
-  e = &quot;hello&quot;;
-} else {
-  e = &quot;world&quot;;
-}
-// or
-def server_list = ansible.get_hosts();
-def server;
-for (s in server_list) {
-  if (s.name == 'expected_host') {
-    server = s;
-    break;
-  }
-}
-</code></pre>
+<span class="k">if</span> <span class="n">a</span> <span class="o">{</span>
+  <span class="n">e</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span><span class="o">;</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+  <span class="n">e</span> <span class="o">=</span> <span class="s2">&quot;world&quot;</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="c1">// or</span>
+<span class="kt">def</span> <span class="n">server_list</span> <span class="o">=</span> <span class="n">ansible</span><span class="o">.</span><span class="na">get_hosts</span><span class="o">();</span>
+<span class="kt">def</span> <span class="n">server</span><span class="o">;</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">s</span> <span class="k">in</span> <span class="n">server_list</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">name</span> <span class="o">==</span> <span class="s1">&#39;expected_host&#39;</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">s</span><span class="o">;</span>
+    <span class="k">break</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 
 <p>In Rust it is preferred to use the following:</p>
-<pre><code class="rust">let e = if a { &quot;hello&quot; } else { &quot;world&quot; };
-// or
-let server_list = ansible::get_hosts_from_inventory(&quot;$HOME/inventory.yaml&quot;);
-let server: Server = server_list
-    .iter()
-    .filter(|x| x.name == &quot;expected_host&quot;)
-    .first();
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;hello&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="c1">// or</span>
+<span class="kd">let</span><span class="w"> </span><span class="n">server_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ansible</span>::<span class="n">get_hosts_from_inventory</span><span class="p">(</span><span class="s">&quot;$HOME/inventory.yaml&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="kd">let</span><span class="w"> </span><span class="n">server</span>: <span class="nc">Server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">server_list</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">x</span><span class="o">|</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;expected_host&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">.</span><span class="n">first</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
 
 <h3 id="iterators-over-loops">Iterators over loops<a class="headerlink" href="#iterators-over-loops" title="Permanent link">&para;</a></h3>
 <p>We often have to call APIs or similar tasks that may fail and use a loop to set a variable.</p>
-<pre><code class="groovy">// here we are getting a list of results from GitHub
-// and creating a list if we want to use them
-def allRepos = github.get_repo_list()
-def requestedRepos = []
-for (repo in allRepos) {
-  if (repo.name.startswith('hello')) {
-    requestedRepos.add(repo)
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// here we are getting a list of results from GitHub</span>
+<span class="c1">// and creating a list if we want to use them</span>
+<span class="kt">def</span> <span class="n">allRepos</span> <span class="o">=</span> <span class="n">github</span><span class="o">.</span><span class="na">get_repo_list</span><span class="o">()</span>
+<span class="kt">def</span> <span class="n">requestedRepos</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">repo</span> <span class="k">in</span> <span class="n">allRepos</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">repo</span><span class="o">.</span><span class="na">name</span><span class="o">.</span><span class="na">startswith</span><span class="o">(</span><span class="s1">&#39;hello&#39;</span><span class="o">))</span> <span class="o">{</span>
+    <span class="n">requestedRepos</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">repo</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 
-<pre><code class="rust">let requested_repos = github.get_repo_list()
-  .iter()
-  .filter(|x| x.name.starts_with(&quot;hello&quot;))
-  .collect::&lt;Vec&lt;_&gt;&gt;();
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">requested_repos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">github</span><span class="p">.</span><span class="n">get_repo_list</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="n">iter</span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">x</span><span class="o">|</span><span class="w"> </span><span class="n">x</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="n">starts_with</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="p">.</span><span class="n">collect</span>::<span class="o">&lt;</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">_</span><span class="o">&gt;&gt;</span><span class="p">();</span><span class="w"></span>
+</code></pre></div>
 
 <h3 id="enums-over-boolean-or-ints">Enums over boolean or ints<a class="headerlink" href="#enums-over-boolean-or-ints" title="Permanent link">&para;</a></h3>
 <p>Enums are a more expressive way of handling multiple cases and help with readability.</p>
-<pre><code class="rust">fn http_get(url: &amp;str) -&gt; Result&lt;&amp;str&gt; {
-  let response = http::request(http::method::GET, url)?;
-  match response.status {
-    http::status::Ok(resp) =&gt; Ok(resp.body),
-    http::status::Forbidden(resp) =&gt; Err(ErrorKind::RequestFailed(resp.body)),
-  }
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span> <span class="nf">http_get</span><span class="p">(</span><span class="n">url</span>: <span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">http</span>::<span class="n">request</span><span class="p">(</span><span class="n">http</span>::<span class="n">method</span>::<span class="n">GET</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">match</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">status</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">http</span>::<span class="n">status</span>::<span class="nb">Ok</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">resp</span><span class="p">.</span><span class="n">body</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">http</span>::<span class="n">status</span>::<span class="n">Forbidden</span><span class="p">(</span><span class="n">resp</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="n">ErrorKind</span>::<span class="n">RequestFailed</span><span class="p">(</span><span class="n">resp</span><span class="p">.</span><span class="n">body</span><span class="p">)),</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h3 id="handle-option-and-result-with">Handle <code>Option</code> and <code>Result</code> with <code>?</code><a class="headerlink" href="#handle-option-and-result-with" title="Permanent link">&para;</a></h3>
 <p>Adjust code to return a <a href="https://doc.rust-lang.org/stable/std/result/">Result</a> even if it is a Void result. This allows changing</p>
-<pre><code class="rust">fn main() {
-  let _conf_file = std::fs::read_to_string(&quot;config.yaml&quot;).unwrap(&quot;failed to load file&quot;);
-  println!(&quot;Successfully loaded config file&quot;);
-}
-//
-// TO
-//
-fn main() -&gt; Result&lt;()&gt; { // () is our void return type
-  // The error from read_to_string will bubble up to the Result by using `?`
-  let _conf_file = std::fs::read_to_string(&quot;config.yaml&quot;)?;
-  println!(&quot;Successfully loaded config file&quot;);
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">_conf_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span>::<span class="n">fs</span>::<span class="n">read_to_string</span><span class="p">(</span><span class="s">&quot;config.yaml&quot;</span><span class="p">).</span><span class="n">unwrap</span><span class="p">(</span><span class="s">&quot;failed to load file&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Successfully loaded config file&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="c1">//</span>
+<span class="c1">// TO</span>
+<span class="c1">//</span>
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// () is our void return type</span>
+<span class="w">  </span><span class="c1">// The error from read_to_string will bubble up to the Result by using `?`</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="n">_conf_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span>::<span class="n">fs</span>::<span class="n">read_to_string</span><span class="p">(</span><span class="s">&quot;config.yaml&quot;</span><span class="p">)</span><span class="o">?</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Successfully loaded config file&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h3 id="avoid-unsafe-code">Avoid unsafe! code<a class="headerlink" href="#avoid-unsafe-code" title="Permanent link">&para;</a></h3>
 <p>Unsafe code is rarely needed and the memory implications require considerable resources

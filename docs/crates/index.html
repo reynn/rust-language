@@ -348,7 +348,7 @@
         
           <li class="md-nav__item">
   <a href="#error-chain" class="md-nav__link">
-    Error Chain
+    error-chain
   </a>
   
 </li>
@@ -356,6 +356,13 @@
           <li class="md-nav__item">
   <a href="#anyhow" class="md-nav__link">
     Anyhow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thiserror" class="md-nav__link">
+    thiserror
   </a>
   
 </li>
@@ -461,7 +468,7 @@
         
           <li class="md-nav__item">
   <a href="#error-chain" class="md-nav__link">
-    Error Chain
+    error-chain
   </a>
   
 </li>
@@ -469,6 +476,13 @@
           <li class="md-nav__item">
   <a href="#anyhow" class="md-nav__link">
     Anyhow
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thiserror" class="md-nav__link">
+    thiserror
   </a>
   
 </li>
@@ -542,7 +556,7 @@
                 
                 <h1 id="rust-crates">Rust Crates <!-- omit in toc --><a class="headerlink" href="#rust-crates" title="Permanent link">&para;</a></h1>
 <h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
-<h3 id="error-chain">Error Chain<a class="headerlink" href="#error-chain" title="Permanent link">&para;</a></h3>
+<h3 id="error-chain">error-chain<a class="headerlink" href="#error-chain" title="Permanent link">&para;</a></h3>
 <p><a href="https://crates.io/crates/error_chain"><img alt="error_chain" src="https://img.shields.io/crates/v/error_chain.svg?style=flat-square&amp;label=error_chain%20crates.io" /></a>
 <a href="https://docs.rs/error_chain"><img alt="error_chain" src="https://img.shields.io/crates/v/error_chain.svg?style=flat-square&amp;label=error_chain%20docs.rs" /></a></p>
 <p>Documentation for error_chain can be found at <a href="https://docs.rs/error-chain">docs.rs</a>.</p>
@@ -553,6 +567,7 @@ Error chain is part of the Rust nursery, this means there is a chance of it bein
 <a href="https://docs.rs/anyhow"><img alt="anyhow" src="https://img.shields.io/crates/v/anyhow.svg?style=flat-square&amp;label=anyhow%20docs.rs" /></a></p>
 <p>Anyhow provides a simpler API compared to error-chain by leaving custom error handling to the developer.
 Where error_chain uses a macro to override the default std::result::Result anyhow provides its own version of Result</p>
+<h3 id="thiserror">thiserror<a class="headerlink" href="#thiserror" title="Permanent link">&para;</a></h3>
 <p><a href="https://crates.io/crates/thiserror"><img alt="thiserror" src="https://img.shields.io/crates/v/thiserror.svg?style=flat-square&amp;label=thiserror%20crates.io" /></a>
 <a href="https://docs.rs/thiserror"><img alt="thiserror" src="https://img.shields.io/crates/v/thiserror.svg?style=flat-square&amp;label=thiserror%20docs.rs" /></a></p>
 <p>Anyhow is likely going to be used with another library like <code>thiserror</code> that provides a wrapper around the <code>std::error::Error</code> trait</p>

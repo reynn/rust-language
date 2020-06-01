@@ -2,7 +2,7 @@
 
 ## Error Handling
 
-### Error Chain
+### error-chain
 
 [![error_chain](https://img.shields.io/crates/v/error_chain.svg?style=flat-square&label=error_chain%20crates.io)](https://crates.io/crates/error_chain)
 [![error_chain](https://img.shields.io/crates/v/error_chain.svg?style=flat-square&label=error_chain%20docs.rs)](https://docs.rs/error_chain)
@@ -19,6 +19,8 @@ Error chain is part of the Rust nursery, this means there is a chance of it bein
 
 Anyhow provides a simpler API compared to error-chain by leaving custom error handling to the developer.
 Where error_chain uses a macro to override the default std::result::Result anyhow provides its own version of Result
+
+### thiserror
 
 [![thiserror](https://img.shields.io/crates/v/thiserror.svg?style=flat-square&label=thiserror%20crates.io)](https://crates.io/crates/thiserror)
 [![thiserror](https://img.shields.io/crates/v/thiserror.svg?style=flat-square&label=thiserror%20docs.rs)](https://docs.rs/thiserror)

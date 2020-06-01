@@ -557,95 +557,95 @@
 <p><a href="https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html">Ownership Chapter</a></p>
 <p>Rust does not force you to manage memory directly using <code>alloc</code> and <code>dealloc</code>, it also does not use a
 Garbage collection system such as Java and Go. Instead when variables go out of scope they are cleaned up.</p>
-<pre><code class="rust">fn main() {
-    let x = 10;
-    { // This is a closure and is a separate scope from the main func
-        let y = 20;
-        println!(&quot;x + y = {}&quot;, (x + y));
-    } // This is the end of the closure, y will be unavailable after this
-    println!(&quot;y is {}&quot;, y);
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="c1">// This is a closure and is a separate scope from the main func</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;x + y = {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">// This is the end of the closure, y will be unavailable after this</span>
+<span class="w">    </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;y is {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>When attempting to run this code you will get the following error</p>
-<pre><code class="shell">$ cargo run
-Compiling rust-basic-app-template v0.1.0 (/Users/reynn/git/github.com/reynn/rust-basic-app-template)
-error[E0425]: cannot find value `y` in this scope
- --&gt; src/main.rs:8:25
-  |
-8 |     println!(&quot;y is {}&quot;, y);
-  |                         ^ help: a local variable with a similar name exists: `x`
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> cargo run
+<span class="go">Compiling rust-basic-app-template v0.1.0 (/Users/reynn/git/github.com/reynn/rust-basic-app-template)</span>
+<span class="go">error[E0425]: cannot find value `y` in this scope</span>
+<span class="go"> --&gt; src/main.rs:8:25</span>
+<span class="go">  |</span>
+<span class="go">8 |     println!(&quot;y is {}&quot;, y);</span>
+<span class="go">  |                         ^ help: a local variable with a similar name exists: `x`</span>
 
-error: aborting due to previous error
+<span class="go">error: aborting due to previous error</span>
 
-For more information about this error, try `rustc --explain E0425`.
-error: could not compile `rust-basic-app-template`.
+<span class="go">For more information about this error, try `rustc --explain E0425`.</span>
+<span class="go">error: could not compile `rust-basic-app-template`.</span>
 
-To learn more, run the command again with --verbose.
-</code></pre>
+<span class="go">To learn more, run the command again with --verbose.</span>
+</code></pre></div>
 
 <h2 id="option-and-result"><code>Option</code> and <code>Result</code><a class="headerlink" href="#option-and-result" title="Permanent link">&para;</a></h2>
 <p><a href="https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html?highlight=option#the-option-enum-and-its-advantages-over-null-values">Option Chapter</a></p>
 <p><a href="https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html">Result Chapter</a></p>
 <p>A typical pattern in Go is to return a type + an error like shown in the following snippet</p>
-<pre><code class="golang">// This function wont fail the program but still has to return an error type
-func add(a, b: int) (int, error) {
-    if b &lt; 0 || a &lt; 0 {
-        return 0, fmt.Error(&quot;Not going to add a negative number&quot;)
-    }
-    return a + b
-}
+<div class="highlight"><pre><span></span><code><span class="c1">// This function wont fail the program but still has to return an error type</span>
+<span class="kd">func</span> <span class="nx">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">b</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nx">a</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">fmt</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="s">&quot;Not going to add a negative number&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<span class="p">}</span>
 
-// This function could cause the app to fail if not successful which makes sense for an error
-func GetClient(auth *Authenticator) (*Client, error) {
-    if auth == nil {
-        return nil
-    }
-    // newClient is a method that initializes the client and ensures successful auth
-    // signature is similar to this GetClient method
-    return newClient(auth)
-}
+<span class="c1">// This function could cause the app to fail if not successful which makes sense for an error</span>
+<span class="kd">func</span> <span class="nx">GetClient</span><span class="p">(</span><span class="nx">auth</span> <span class="o">*</span><span class="nx">Authenticator</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">Client</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="nx">auth</span> <span class="o">==</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kc">nil</span>
+    <span class="p">}</span>
+    <span class="c1">// newClient is a method that initializes the client and ensures successful auth</span>
+    <span class="c1">// signature is similar to this GetClient method</span>
+    <span class="k">return</span> <span class="nx">newClient</span><span class="p">(</span><span class="nx">auth</span><span class="p">)</span>
+<span class="p">}</span>
 
-func main() {
-    res, err := add(1, -5)
-    if err != nil {
-        fmt.Printf(&quot;Failed to add the numbers together %v&quot;, err)
-    } else {
-        fmt.Printf(&quot;Result is %d&quot;, res)
-    }
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Failed to add the numbers together %v&quot;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">fmt</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">&quot;Result is %d&quot;</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span>
+    <span class="p">}</span>
 
-    if client, cErr := GetClient(AnonAuth{}); err != {
-        executeLoop(client)
-    } else {
-        panic(cErr)
-    }
-}
-</code></pre>
+    <span class="k">if</span> <span class="nx">client</span><span class="p">,</span> <span class="nx">cErr</span> <span class="o">:=</span> <span class="nx">GetClient</span><span class="p">(</span><span class="nx">AnonAuth</span><span class="p">{});</span> <span class="nx">err</span> <span class="o">!=</span> <span class="p">{</span>
+        <span class="nx">executeLoop</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="nx">cErr</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>In Rust this is made easier by the <code>Option</code> and <code>Result</code> types.</p>
-<pre><code class="rust">fn add(a: i32, b: i32) -&gt; Option&lt;i32&gt; {
-    Some(a+b)
-}
+<div class="highlight"><pre><span></span><code><span class="k">fn</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span>: <span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="n">b</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Option</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">Some</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-fn get_client(auth: &amp;Authenticator) -&gt; Result&lt;Client&gt; {
-    Ok(Client::new(auth)?) // shortcut, `?` will return out the error when the function returns a Result
-}
+<span class="k">fn</span> <span class="nf">get_client</span><span class="p">(</span><span class="n">auth</span>: <span class="kp">&amp;</span><span class="nc">Authenticator</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="n">Client</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">Client</span>::<span class="n">new</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span><span class="o">?</span><span class="p">)</span><span class="w"> </span><span class="c1">// shortcut, `?` will return out the error when the function returns a Result</span>
+<span class="p">}</span><span class="w"></span>
 
-// Result&lt;()&gt; is a void result, this is so you can still use the ? shortcut in main
-fn main() -&gt; Result&lt;()&gt; {
-    if let Some(res) = add(1, 80) {
-        assert_eq!(res, 81);
-    };
+<span class="c1">// Result&lt;()&gt; is a void result, this is so you can still use the ? shortcut in main</span>
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="p">()</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">80</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">assert_eq</span><span class="o">!</span><span class="p">(</span><span class="n">res</span><span class="p">,</span><span class="w"> </span><span class="mi">81</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">};</span><span class="w"></span>
 
-    match get_client(auth::Anonymous()) {
-        Ok(c) -&gt; c.whoami()?,
-        Err(e) -&gt; {
-            eprintln!(&quot;Error creating a new client {}&quot;, e);
-            std::process::exit(2);
-        }
-    }
-}
-</code></pre>
+<span class="w">    </span><span class="k">match</span><span class="w"> </span><span class="n">get_client</span><span class="p">(</span><span class="n">auth</span>::<span class="n">Anonymous</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nb">Ok</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">c</span><span class="p">.</span><span class="n">whoami</span><span class="p">()</span><span class="o">?</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nb">Err</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">eprintln</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Error creating a new client {}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">std</span>::<span class="n">process</span>::<span class="n">exit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h2 id="lazy-iterators">Lazy iterators<a class="headerlink" href="#lazy-iterators" title="Permanent link">&para;</a></h2>
 <p>Similar to generators in Python where the call to <code>.iter()</code> just returns the
@@ -657,13 +657,13 @@ in results we can stop calling the API since we wont care about the rest.</p>
 <h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">&para;</a></h2>
 <p>Macros provide a form of code generation to reduce boilerplate code. The earliest
 macro a new Rust dev will use is the <code>println!</code> macro.</p>
-<pre><code class="rust">// This is provided as a convenient macro
-println!(&quot;Hello World&quot;);
-// The compilation will expand this macro to something like
-{
-  $crate::io::_print(std::fmt::Arguments::new_v1(&amp;[], &amp;[]));
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1">// This is provided as a convenient macro</span>
+<span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Hello World&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// The compilation will expand this macro to something like</span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="cp">$crate</span>::<span class="n">io</span>::<span class="n">_print</span><span class="p">(</span><span class="n">std</span>::<span class="n">fmt</span>::<span class="n">Arguments</span>::<span class="n">new_v1</span><span class="p">(</span><span class="o">&amp;</span><span class="p">[],</span><span class="w"> </span><span class="o">&amp;</span><span class="p">[]));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h3 id="declarative-macros">Declarative Macros<a class="headerlink" href="#declarative-macros" title="Permanent link">&para;</a></h3>
 <p><a href="https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming">Declarative Macros Chapter</a></p>
@@ -678,44 +678,44 @@ Rust expands on normal enums by having Enum variants as well. The <a href="https
 in the Rust book has a really good intro on enums and how to define variants
 but at a high level overview.</p>
 <h3 id="basic-enum-example">Basic enum example<a class="headerlink" href="#basic-enum-example" title="Permanent link">&para;</a></h3>
-<pre><code class="rust">/// Define a basic enum to switch between IP v4 and v6.
-enum AddressVersion {
-    V4,
-    V6,
-}
-struct IPAddress {
-    version: AddressVersion,
-    address: String,
-}
-impl IPAddress {
-    fn new(address: String) -&gt; Result&lt;Self&gt; {
-        /// parse_version isn't defined here but the signature is
-        /// parse_version(address: &amp;str) -&gt; Result(AddressVersion)
-        if let Ok(address) = parse_version(address)? {
-            Ok(
-                Self {
-                    version,
-                    address,
-                }
-            )
-        }
-    }
-}
+<div class="highlight"><pre><span></span><code><span class="sd">/// Define a basic enum to switch between IP v4 and v6.</span>
+<span class="k">enum</span> <span class="nc">AddressVersion</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">V4</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">V6</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">struct</span> <span class="nc">IPAddress</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">version</span>: <span class="nc">AddressVersion</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">address</span>: <span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">impl</span><span class="w"> </span><span class="n">IPAddress</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">address</span>: <span class="nb">String</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="bp">Self</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="sd">/// parse_version isn&#39;t defined here but the signature is</span>
+<span class="w">        </span><span class="sd">/// parse_version(address: &amp;str) -&gt; Result(AddressVersion)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Ok</span><span class="p">(</span><span class="n">address</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_version</span><span class="p">(</span><span class="n">address</span><span class="p">)</span><span class="o">?</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nb">Ok</span><span class="p">(</span><span class="w"></span>
+<span class="w">                </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="n">version</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="n">address</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-#[cfg(test)]
-mod address_tests {
-    fn test_basic() {
-    }
-}
-</code></pre>
+<span class="cp">#[cfg(test)]</span><span class="w"></span>
+<span class="k">mod</span> <span class="nn">address_tests</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">fn</span> <span class="nf">test_basic</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <h3 id="enum-variants">Enum Variants<a class="headerlink" href="#enum-variants" title="Permanent link">&para;</a></h3>
-<pre><code class="rust">/// Simplify the basic example with a variant
-enum IPAddress {
-    V4(String),
-    V6(String),
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="sd">/// Simplify the basic example with a variant</span>
+<span class="k">enum</span> <span class="nc">IPAddress</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">V4</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span><span class="w"></span>
+<span class="w">    </span><span class="n">V6</span><span class="p">(</span><span class="nb">String</span><span class="p">),</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <!-- Links below -->
                 

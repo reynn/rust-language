@@ -514,32 +514,32 @@
 <h3 id="vim-plug">Vim Plug<a class="headerlink" href="#vim-plug" title="Permanent link">&para;</a></h3>
 <p>First step is to install CoC using Vim Plug or any other plugin manager.</p>
 <p><a href="https://github.com/junegunn/vim-plug#installation">VimPlug Setup</a></p>
-<pre><code class="shell">$ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-</code></pre>
+<div class="highlight"><pre><span></span><code>$ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+</code></pre></div>
 
 <p>Once vim-plug exists in the autoload directory it can start managing plugins.</p>
 <h3 id="coc">CoC<a class="headerlink" href="#coc" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/neoclide/coc.nvim#quick-start">CoC Setup</a></p>
 <p>With Vim Plug installed it is just a matter of adding the CoC plugin and its keybindings.</p>
-<pre><code class="vim">&quot; Specify a directory for plugins
-&quot; - For Neovim: stdpath('data') . '/plugged'
-&quot; - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
+<div class="highlight"><pre><span></span><code><span class="c">&quot; Specify a directory for plugins</span>
+<span class="c">&quot; - For Neovim: stdpath(&#39;data&#39;) . &#39;/plugged&#39;</span>
+<span class="c">&quot; - Avoid using standard Vim directory names like &#39;plugin&#39;</span>
+<span class="k">call</span> plug#begin<span class="p">(</span><span class="s1">&#39;~/.vim/plugged&#39;</span><span class="p">)</span>
 
-&quot; Use release branch (Recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+<span class="c">&quot; Use release branch (Recommend)</span>
+Plug <span class="s1">&#39;neoclide/coc.nvim&#39;</span><span class="p">,</span> {<span class="s1">&#39;branch&#39;</span>: <span class="s1">&#39;release&#39;</span>}
 
-&quot; Initialize plugin system
-call plug#end()
-</code></pre>
+<span class="c">&quot; Initialize plugin system</span>
+<span class="k">call</span> plug#<span class="k">end</span><span class="p">()</span>
+</code></pre></div>
 
 <p>Save this in your ~/.vimrc or init.vim file. In a new shell run the command <code>vim -c 'PlugInstall | qall</code>. This will install our plugins and quit. Now we can open a new vim instance and have CoC enabled.</p>
 <p>I would suggest using the <a href="https://github.com/neoclide/coc.nvim#example-vim-configuration">example config</a> to get started and customize as you need.</p>
 <h3 id="coc-extensions">CoC Extensions<a class="headerlink" href="#coc-extensions" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions">Extensions overview</a></p>
 <p>Extensions add functionality to CoC such as interacting with Language servers over LSP. I suggest adding any extensions you want to use to <code>g:coc_global_extensions</code> in your <code>.vimrc</code> or <code>init.vim</code> file.</p>
-<pre><code class="vim">let g:coc_global_extensions = ['coc-actions', 'coc-rust-analyzer', 'coc-json', 'coc-yank']
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">let</span> <span class="k">g</span>:coc_global_extensions <span class="p">=</span> [<span class="s1">&#39;coc-actions&#39;</span><span class="p">,</span> <span class="s1">&#39;coc-rust-analyzer&#39;</span><span class="p">,</span> <span class="s1">&#39;coc-json&#39;</span><span class="p">,</span> <span class="s1">&#39;coc-yank&#39;</span>]
+</code></pre></div>
 
 <h2 id="spacevim">SpaceVim<a class="headerlink" href="#spacevim" title="Permanent link">&para;</a></h2>
 <p>SpaceVim is a complete Vim configuration. Read through the documentation provided by spacevim for full overview of how to best use it.</p>

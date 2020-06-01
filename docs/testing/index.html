@@ -493,40 +493,42 @@ testing as well as a great doc testing feature.</p>
 <li><a href="https://doc.rust-lang.org/stable/rust-by-example/testing.html">Rust By Example - Testing</a></li>
 </ul>
 <h2 id="code-example">Code example<a class="headerlink" href="#code-example" title="Permanent link">&para;</a></h2>
-<p>````rust
-/// A human being is represented here
-pub struct Person {
-    /// A person must have a name, no matter how much Juliet may hate it
-    name: String,
-}</p>
-<p>impl Person {
-    /// Returns a person with the name given them
-    ///
-    /// # Arguments
-    ///
-    /// * <code>name</code> - A string slice that holds the name of the person
-    ///
-    /// # Example
-    ///
-    /// <code>/// // You can have rust code between fences inside the comments
-    /// // If you pass --test to Rustdoc, it will even test it for you!
-    /// use doc::Person;
-    /// let person = Person::new("name");
-    ///</code>
-    pub fn new(name: &amp;str) -&gt; Person {
-        Person {
-            name: name.to_string(),
-        }
-    }</p>
-<pre><code>/// Gives a friendly hello!
-///
-/// Says "Hello, [name]" to the `Person` it is called on.
-pub fn hello(&amp;self) {
-    println!("Hello, {}!", self.name);
-}
-</code></pre>
-<p>}
-```</p>
+<div class="highlight"><pre><span></span><code><span class="sd">/// A human being is represented here</span>
+<span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">Person</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="sd">/// A person must have a name, no matter how much Juliet may hate it</span>
+<span class="w">    </span><span class="n">name</span>: <span class="nb">String</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">impl</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="sd">/// Returns a person with the name given them</span>
+<span class="w">    </span><span class="sd">///</span>
+<span class="w">    </span><span class="sd">/// # Arguments</span>
+<span class="w">    </span><span class="sd">///</span>
+<span class="w">    </span><span class="sd">/// * `name` - A string slice that holds the name of the person</span>
+<span class="w">    </span><span class="sd">///</span>
+<span class="w">    </span><span class="sd">/// # Example</span>
+<span class="w">    </span><span class="sd">///</span>
+<span class="w">    </span><span class="sd">/// ```</span>
+<span class="w">    </span><span class="sd">/// // You can have rust code between fences inside the comments</span>
+<span class="w">    </span><span class="sd">/// // If you pass --test to Rustdoc, it will even test it for you!</span>
+<span class="w">    </span><span class="sd">/// use doc::Person;</span>
+<span class="w">    </span><span class="sd">/// let person = Person::new(&quot;name&quot;);</span>
+<span class="w">    </span><span class="sd">/// ```</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">name</span>: <span class="kp">&amp;</span><span class="kt">str</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Person</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">name</span>: <span class="nc">name</span><span class="p">.</span><span class="n">to_string</span><span class="p">(),</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="sd">/// Gives a friendly hello!</span>
+<span class="w">    </span><span class="sd">///</span>
+<span class="w">    </span><span class="sd">/// Says &quot;Hello, [name]&quot; to the `Person` it is called on.</span>
+<span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">hello</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">println</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;Hello, {}!&quot;</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+
 <h2 id="unit-testing">Unit Testing<a class="headerlink" href="#unit-testing" title="Permanent link">&para;</a></h2>
 <p>Unit testing will live right beside the code in a testing submodule. These should be quick tests
 that can be mocked and are very focused on a specific function and its inputs/outputs. These

@@ -20,7 +20,7 @@ fn main() {
 
 When attempting to run this code you will get the following error
 
-```shell
+```console
 $ cargo run
 Compiling rust-basic-app-template v0.1.0 (/Users/reynn/git/github.com/reynn/rust-basic-app-template)
 error[E0425]: cannot find value `y` in this scope
@@ -45,7 +45,7 @@ To learn more, run the command again with --verbose.
 
 A typical pattern in Go is to return a type + an error like shown in the following snippet
 
-```golang
+```go
 // This function wont fail the program but still has to return an error type
 func add(a, b: int) (int, error) {
     if b < 0 || a < 0 {

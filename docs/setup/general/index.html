@@ -439,30 +439,30 @@
 </ul>
 <h2 id="install-rust-and-cargo">Install Rust and Cargo<a class="headerlink" href="#install-rust-and-cargo" title="Permanent link">&para;</a></h2>
 <p>Best way to bootstrap your development is using <a href="https://rustup.rs">Rustup</a>.</p>
-<pre><code class="console">$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-info: downloading installer
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> curl --proto <span class="s1">&#39;=https&#39;</span> --tlsv1.2 -sSf https://sh.rustup.rs <span class="p">|</span> sh
+<span class="go">info: downloading installer</span>
 
-Welcome to Rust!
+<span class="go">Welcome to Rust!</span>
 
-This will download and install the official compiler for the Rust
-programming language, and its package manager, Cargo.
+<span class="go">This will download and install the official compiler for the Rust</span>
+<span class="go">programming language, and its package manager, Cargo.</span>
 
-...
+<span class="go">...</span>
 
-   default host triple: x86_64-unknown-linux-gnu
-     default toolchain: stable
-               profile: default
-  modify PATH variable: yes
-1) Proceed with installation (default)
-2) Customize installation
-3) Cancel installation
-</code></pre>
+<span class="go">   default host triple: x86_64-unknown-linux-gnu</span>
+<span class="go">     default toolchain: stable</span>
+<span class="go">               profile: default</span>
+<span class="go">  modify PATH variable: yes</span>
+<span class="go">1) Proceed with installation (default)</span>
+<span class="go">2) Customize installation</span>
+<span class="go">3) Cancel installation</span>
+</code></pre></div>
 
 <p>Select 1 to proceed, customizing provides options to download nightly/beta releases amongst other things. We do not need those right now.
 Once this completes and you are back at a prompt we will go ahead and get clippy and rustfmt installed.</p>
-<pre><code class="shell"># Launch a new shell or run `source $HOME/.cargo/env` to have cargo in our path
+<div class="highlight"><pre><span></span><code><span class="c1"># Launch a new shell or run `source $HOME/.cargo/env` to have cargo in our path</span>
 $ rustup component add rustfmt clippy
-</code></pre>
+</code></pre></div>
 
 <p>Thats it! You are now ready to write and execute Rust code.</p>
 <h2 id="setup-your-ide-of-choice">Setup your IDE of choice<a class="headerlink" href="#setup-your-ide-of-choice" title="Permanent link">&para;</a></h2>

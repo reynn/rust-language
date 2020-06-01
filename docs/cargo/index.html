@@ -538,39 +538,39 @@
 </ul>
 <h2 id="build"><code>build</code><a class="headerlink" href="#build" title="Permanent link">&para;</a></h2>
 <p>Builds a binary from the source code in the existing directory.</p>
-<pre><code class="console">$ cargo build # Use the debug profile to build the binary and output to target/debug
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> cargo build <span class="c1"># Use the debug profile to build the binary and output to target/debug</span>
 
-$ cargo build --release # Uses a release profile which removes debugging symbols and applies additional optimizations
+<span class="gp">$</span> cargo build --release <span class="c1"># Uses a release profile which removes debugging symbols and applies additional optimizations</span>
 
-$ cargo build --bins # build all binaries (use --bin &lt;name&gt; to build a single binary)
-</code></pre>
+<span class="gp">$</span> cargo build --bins <span class="c1"># build all binaries (use --bin &lt;name&gt; to build a single binary)</span>
+</code></pre></div>
 
 <h2 id="test"><code>test</code><a class="headerlink" href="#test" title="Permanent link">&para;</a></h2>
 <p>Run tests for the current project.</p>
-<pre><code class="console">$ cargo test # Default runs all tests available in the project
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> cargo <span class="nb">test</span> <span class="c1"># Default runs all tests available in the project</span>
 
-$ cargo test -- --no-capture # Runs tests and allows output from logs to go to stdout
+<span class="gp">$</span> cargo <span class="nb">test</span> -- --no-capture <span class="c1"># Runs tests and allows output from logs to go to stdout</span>
 
-$ cargo test test_example_one # Run only tests that match the specified pattern
-</code></pre>
+<span class="gp">$</span> cargo <span class="nb">test</span> test_example_one <span class="c1"># Run only tests that match the specified pattern</span>
+</code></pre></div>
 
 <h2 id="doc"><code>doc</code><a class="headerlink" href="#doc" title="Permanent link">&para;</a></h2>
 <p>Generate documentatino for the project including from dependancy crates.</p>
-<pre><code class="console">$ cargo doc # Generates the docs to target/doc
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> cargo doc <span class="c1"># Generates the docs to target/doc</span>
 
-$ cargo doc --open # After docs are generated open in the default web browser
+<span class="gp">$</span> cargo doc --open <span class="c1"># After docs are generated open in the default web browser</span>
 
-$ cargo doc --no-deps # Only generate docs for the current project and not its dependencies
-</code></pre>
+<span class="gp">$</span> cargo doc --no-deps <span class="c1"># Only generate docs for the current project and not its dependencies</span>
+</code></pre></div>
 
 <h2 id="install"><code>install</code><a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
 <p>Install the current project or a specific binary into <code>.cargo/bin</code>.</p>
-<pre><code class="console">$ cargo install exa # Install `exa` a modern ls replacement
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> cargo install exa <span class="c1"># Install `exa` a modern ls replacement</span>
 
-$ cargo install --no-default-features exa # Install exa without any additional features
+<span class="gp">$</span> cargo install --no-default-features exa <span class="c1"># Install exa without any additional features</span>
 
-$ cargo install ripgrep --features 'pcre2'
-</code></pre>
+<span class="gp">$</span> cargo install ripgrep --features <span class="s1">&#39;pcre2&#39;</span>
+</code></pre></div>
 
 <h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
 <h3 id="plugin-suggestions">Plugin Suggestions<a class="headerlink" href="#plugin-suggestions" title="Permanent link">&para;</a></h3>
@@ -579,31 +579,32 @@ $ cargo install ripgrep --features 'pcre2'
 <ul>
 <li>[<code>cargo-edit</code>] - Add dependencies to your Cargo.toml without having to manually edit the file.</li>
 </ul>
-<p><code>console
-  $ cargo install cargo-edit
-    Updating crates.io index
-  Installing cargo-add v0.2.0
-    ...
-    Finished release [optimized] target(s) in 14.65s
-   Replacing /Users/reynn/.cargo/bin/cargo-add
-  $ cargo add clap
-  $ cargo rm serde_json</code></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> cargo install cargo-edit
+<span class="go">  Updating crates.io index</span>
+<span class="go">Installing cargo-add v0.2.0</span>
+<span class="go">  ...</span>
+<span class="go">  Finished release [optimized] target(s) in 14.65s</span>
+<span class="go"> Replacing /Users/reynn/.cargo/bin/cargo-add</span>
+<span class="gp">$</span> cargo add clap
+<span class="gp">$</span> cargo rm serde_json
+</code></pre></div>
+
 <ul>
 <li>[<code>cargo-generate</code>] - Kickstart a project by using an existing git repo as a template.
   a list of available templates is available on the [<code>cargo-generate GitHub</code>]</li>
 </ul>
-<p><code>console
-  $ cargo install cargo-generate
-      Updating crates.io index
-    Installing cargo-generate v0.5.0
-      ...
-      Finished release [optimized] target(s) in 3m 40s
-    Installing C:\Users\arasu\.cargo\bin\cargo-generate.exe
-    Installed package `cargo-generate v0.5.0` (executable `cargo-generate.exe`)
-  $ cargo generate --git https://github.com/mendelt/cmdr-template
-    Project Name: test-project
-    Creating project called `test-project`...
-    Done! New project created ~/git/test-project</code></p>
+<div class="highlight"><pre><span></span><code><span class="gp">$</span> cargo install cargo-generate
+<span class="go">    Updating crates.io index</span>
+<span class="go">  Installing cargo-generate v0.5.0</span>
+<span class="go">    ...</span>
+<span class="go">    Finished release [optimized] target(s) in 3m 40s</span>
+<span class="go">  Installing C:\Users\arasu\.cargo\bin\cargo-generate.exe</span>
+<span class="go">  Installed package `cargo-generate v0.5.0` (executable `cargo-generate.exe`)</span>
+<span class="gp">$</span> cargo generate --git https://github.com/mendelt/cmdr-template
+<span class="go">  Project Name: test-project</span>
+<span class="go">  Creating project called `test-project`...</span>
+<span class="go">  Done! New project created ~/git/test-project</span>
+</code></pre></div>
                 
               
               
