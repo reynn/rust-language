@@ -13,7 +13,7 @@
         <meta name="author" content="Nic Patterson">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.2">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.1.7">
     
     
       
@@ -21,7 +21,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.a2408e81.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.4c7052ca.min.css">
       
       
     
@@ -537,9 +537,41 @@
 </li>
 </ul>
 <h2 id="build"><code>build</code><a class="headerlink" href="#build" title="Permanent link">&para;</a></h2>
+<p>Builds a binary from the source code in the existing directory.</p>
+<pre><code class="console">$ cargo build # Use the debug profile to build the binary and output to target/debug
+
+$ cargo build --release # Uses a release profile which removes debugging symbols and applies additional optimizations
+
+$ cargo build --bins # build all binaries (use --bin &lt;name&gt; to build a single binary)
+</code></pre>
+
 <h2 id="test"><code>test</code><a class="headerlink" href="#test" title="Permanent link">&para;</a></h2>
+<p>Run tests for the current project.</p>
+<pre><code class="console">$ cargo test # Default runs all tests available in the project
+
+$ cargo test -- --no-capture # Runs tests and allows output from logs to go to stdout
+
+$ cargo test test_example_one # Run only tests that match the specified pattern
+</code></pre>
+
 <h2 id="doc"><code>doc</code><a class="headerlink" href="#doc" title="Permanent link">&para;</a></h2>
+<p>Generate documentatino for the project including from dependancy crates.</p>
+<pre><code class="console">$ cargo doc # Generates the docs to target/doc
+
+$ cargo doc --open # After docs are generated open in the default web browser
+
+$ cargo doc --no-deps # Only generate docs for the current project and not its dependencies
+</code></pre>
+
 <h2 id="install"><code>install</code><a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<p>Install the current project or a specific binary into <code>.cargo/bin</code>.</p>
+<pre><code class="console">$ cargo install exa # Install `exa` a modern ls replacement
+
+$ cargo install --no-default-features exa # Install exa without any additional features
+
+$ cargo install ripgrep --features 'pcre2'
+</code></pre>
+
 <h2 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
 <h3 id="plugin-suggestions">Plugin Suggestions<a class="headerlink" href="#plugin-suggestions" title="Permanent link">&para;</a></h3>
 <p>These add extra commands to cargo that make it even more useful!</p>
@@ -624,7 +656,7 @@
       
     </div>
     
-      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/vendor.22b62ea4.min.js"></script>
       <script src="../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
       
       <script>
@@ -632,7 +664,7 @@
           base: "..",
           features: [],
           search: Object.assign({
-            worker: "../assets/javascripts/worker/search.27c6a5e6.min.js"
+            worker: "../assets/javascripts/worker/search.f6ebf1dc.min.js"
           }, typeof search !== "undefined" && search)
         })
       </script>

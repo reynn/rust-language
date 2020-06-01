@@ -42,7 +42,7 @@ impl Person {
         println!("Hello, {}!", self.name);
     }
 }
-````
+```
 
 ## Unit Testing
 
@@ -58,8 +58,17 @@ specific functions.
 
 ## Documentation testing
 
-### Examples
+Documentation tests will ensure that the documentation and code remain in sync.
+
+## Examples
+
+Examples are generally intended to show usage of a library, it can be a full end to end example or just a small
+example showing basic usage.
 
 ## Benchmarking
+
+Benchmark tests exist in Rust but only in the nightly compiler currently. The idea here is to get an idea of 
+the speed of a function over time to see how code changes affect our efficiency. [Criterion](https://github.com/bheisler/criterion.rs)
+is a library that aims to bring an alternative to the nightly benchmarks to Rust stable.
 
 [rust by example - testing]: https://doc.rust-lang.org/stable/rust-by-example/testing.html

@@ -10,11 +10,51 @@
 
 ## `build`
 
+Builds a binary from the source code in the existing directory.
+
+```console
+$ cargo build # Use the debug profile to build the binary and output to target/debug
+
+$ cargo build --release # Uses a release profile which removes debugging symbols and applies additional optimizations
+
+$ cargo build --bins # build all binaries (use --bin <name> to build a single binary)
+```
+
 ## `test`
+
+Run tests for the current project.
+
+```console
+$ cargo test # Default runs all tests available in the project
+
+$ cargo test -- --no-capture # Runs tests and allows output from logs to go to stdout
+
+$ cargo test test_example_one # Run only tests that match the specified pattern
+```
 
 ## `doc`
 
+Generate documentatino for the project including from dependancy crates.
+
+```console
+$ cargo doc # Generates the docs to target/doc
+
+$ cargo doc --open # After docs are generated open in the default web browser
+
+$ cargo doc --no-deps # Only generate docs for the current project and not its dependencies
+```
+
 ## `install`
+
+Install the current project or a specific binary into `.cargo/bin`.
+
+```console
+$ cargo install exa # Install `exa` a modern ls replacement
+
+$ cargo install --no-default-features exa # Install exa without any additional features
+
+$ cargo install ripgrep --features 'pcre2'
+```
 
 ## Plugins
 
