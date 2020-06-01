@@ -1,4 +1,4 @@
-# Rust Resources <!-- omit in toc -->
+# 🦀 Rust Resources <!-- omit in toc -->
 
 ## Motivations
 
@@ -58,8 +58,10 @@ reading the official book through first.
 
 - [Official Book Online]
 - [Official Book Kindle/Paperback]
-- [Cargo Book]
-- [Build a CLI app]
+- [Cargo Book] - All you want to know about Cargo
+- [Build a CLI app] - Walks through building a CLI application
+- [Rustlings] - 🦀 Small exercises to get you used to reading and writing Rust code!
+- [Awesome Rust] - A curated list of Rust code and resources.
 
 ## Sub Topics
 
@@ -92,3 +94,5 @@ including compiler errors and CLI commands.
 [cargo-edit]: https://github.com/killercup/cargo-edit
 [cargo book]: https://doc.rust-lang.org/cargo/index.html
 [rust cheat sheet]: https://cheats.rs/
+[Rustlings]: https://github.com/rust-lang/rustlings
+[Awesome Rust]: https://github.com/rust-unofficial/awesome-rust
